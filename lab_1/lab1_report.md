@@ -6,7 +6,7 @@ Group: K4110c
 Author: Zagvozkin Artem Pavlovich
 Lab: Lab1
 Date of create: 04.12.2024
-Date of finished: 
+Date of finished: 08.12.2024
 
 
 # Ход работы
@@ -35,14 +35,14 @@ minicibe version
 ![](./images/minicube_version.png)
 
 
-### 3. Загрузка образа HashiCorp Vault
+### 2. Загрузка образа HashiCorp Vault
 ```bash
 docker pull vault:1.13.3
 ```
 ![](./images/docker_vault.png)
 
 
-### 5. Создание Manifest для развертывания пода с образом HashiCorp Vault
+### 3. Создание Manifest для развертывания пода с образом HashiCorp Vault
 Была создана минимальная конфигурация для выполнения задач лабораторной работы
 ```yaml
 apiVersion: v1
@@ -64,13 +64,13 @@ minikube kubectl -- apply -f lab1_pod.yaml
 ```
 ![](./images/kubectl_apply.png)
 
-### 6. Создание сервиса для доступа к данному контейнеру
+### 4. Создание сервиса для доступа к данному контейнеру
 ```bash
 minikube kubectl -- expose pod vault --type=NodePort --port=8200 service/vault exposed
 ```
 ![](./images/kubectl_expose.png)
 
-### 7. Проброс порта для доступа к контейнеру
+### 5. Проброс порта для доступа к контейнеру
 Дождемся создания контейнера
 ![](./images/kubectl_get_pods_1.png)
 ![](./images/kubectl_get_pods_2.png)
@@ -85,7 +85,7 @@ minikube kubectl -- port-forward service/vault 8200:8200
 ![](./images/vault_web_1.png)
 
 
-### 8. Поиск токена и осуществление входа
+### 6. Поиск токена и осуществление входа
 Токен для авторизации можно найти в логах Vault. Для этого выполним следующую команду
 ```bash
 minikube kubectl logs vault
@@ -99,7 +99,7 @@ minikube kubectl logs vault
 Осуществляем вход
 ![](./images/vault_web_2.png)
 
-### 9. Схема организации
+### 7. Схема организации контейнеров и сервисов
 ![](./images/schema.png)
 
 
