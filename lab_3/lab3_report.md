@@ -27,16 +27,16 @@ data:
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
-  name: lab3-deployment
+  name: lab3-replicaset
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: lab3-deployment
+      app: lab3-replicaset
   template:
     metadata:
       labels:
-        app: lab3-deployment
+        app: lab3-replicaset
     spec:
       containers:
       - name: frontend
@@ -94,7 +94,7 @@ minikube kubectl -- create secret tls lab3-tls --key lab3.key --cert lab3.crt
 ### 6. Формирование манифеста для объекта Ingress
 Запускаем сервис
 ```bash
-minikube kubectl -- expose replicaset lab3-deployment --port=3000 --name=lab3-service --type=ClusterIP
+minikube kubectl -- expose replicaset lab3-replicaset --port=3000 --name=lab3-service --type=ClusterIP
 ```
 
 ```yaml
