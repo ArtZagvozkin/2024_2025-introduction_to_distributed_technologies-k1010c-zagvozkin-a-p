@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: lab3-configmap
+data:
+  react_app_user_name: "Artem Zagvozkin"
+  react_app_company_name: "Artzagvozkin Studio"

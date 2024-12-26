@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: lab3-ingress
+spec:
+  tls:
+  - hosts:
+    - artzagvozkin-studio.com
+    secretName: lab3-tls
+  rules:
+  - host: artzagvozkin-studio.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: lab3-service
+            port:
+              number: 3000
